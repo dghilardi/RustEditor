@@ -24,8 +24,6 @@
 namespace RustEditor {
 namespace Constants {
 
-const char ACTION_ID[] = "RustEditor.Action";
-const char MENU_ID[] = "RustEditor.Menu";
 
 } // namespace RustEditor
 } // namespace Constants
