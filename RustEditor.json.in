@@ -1,0 +1,17 @@
+{
+    \"Name\" : \"RustEditor\",
+    \"Version\" : \"0.0.1\",
+    \"CompatVersion\" : \"0.0.1\",
+    \"Vendor\" : \"dghila\",
+    \"Copyright\" : \"(C) dghila\",
+    \"License\" : [
+        \"GNU Lesser General Public License Usage\",
+        \"\",
+        \"This plugin may be used under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 2.1 of the License, or (at your option) any later version. Please review the following information to ensure the GNU Lesser General Public License requirements will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.\"
+    ],
+    \"Category\" : \"Other Languages\",
+    \"Description\" : \"Rust editor component.\",
+    \"Url\" : \"\",
+    $$dependencyList
+}
+
