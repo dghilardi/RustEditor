@@ -3,12 +3,14 @@ DEFINES += RUSTEDITOR_LIBRARY
 # RustEditor files
 
 SOURCES += rusteditorplugin.cpp \
-    rusteditorfactory.cpp
+    rusteditorfactory.cpp \
+    rusteditorwidget.cpp
 
 HEADERS += rusteditorplugin.h \
         rusteditor_global.h \
         rusteditorconstants.h \
-    rusteditorfactory.h
+    rusteditorfactory.h \
+    rusteditorwidget.h
 
 # Qt Creator linking
 

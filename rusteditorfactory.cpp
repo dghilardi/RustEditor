@@ -19,6 +19,7 @@
 */
 
 #include "rusteditorfactory.h"
+#include "rusteditorwidget.h"
 
 #include <QCoreApplication>
 
@@ -44,6 +45,7 @@ RustEditorFactory::RustEditorFactory()
     addMimeType(Constants::RUST_SOURCE_MIMETYPE);
 
     setDocumentCreator([]() { return new TextDocument(Constants::RUSTEDITOR_ID);});
+    setEditorWidgetCreator([]() { return new RustEditorWidget; });
     setIndenterCreator([](){return new TextEditor::NormalIndenter;});
 
     setCommentStyle(Utils::CommentDefinition::CppStyle);
