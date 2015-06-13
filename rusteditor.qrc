@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/rusteditor">
+        <file>RustEditor.mimetypes.xml</file>
+        <file>images/qt_rs.png</file>
+    </qresource>
+</RCC>

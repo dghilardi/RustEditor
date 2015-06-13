@@ -20,6 +20,7 @@
 
 #include "rusteditorplugin.h"
 #include "rusteditorconstants.h"
+#include "rusteditorfactory.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/icontext.h>
@@ -27,6 +28,8 @@
 #include <coreplugin/actionmanager/command.h>
 #include <coreplugin/actionmanager/actioncontainer.h>
 #include <coreplugin/coreconstants.h>
+
+#include <utils/mimetypes/mimedatabase.h>
 
 #include <QAction>
 #include <QMessageBox>
@@ -60,6 +63,9 @@ bool RustEditorPlugin::initialize(const QStringList &arguments, QString *errorSt
 
     Q_UNUSED(arguments)
     Q_UNUSED(errorString)
+
+    Utils::MimeDatabase::addMimeTypes(QLatin1String(":/rusteditor/RustEditor.mimetypes.xml"));
+    addAutoReleasedObject(new RustEditorFactory);
 
     return true;
 }

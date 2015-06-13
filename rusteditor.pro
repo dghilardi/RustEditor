@@ -2,11 +2,13 @@ DEFINES += RUSTEDITOR_LIBRARY
 
 # RustEditor files
 
-SOURCES += rusteditorplugin.cpp
+SOURCES += rusteditorplugin.cpp \
+    rusteditorfactory.cpp
 
 HEADERS += rusteditorplugin.h \
         rusteditor_global.h \
         rusteditorconstants.h \
+    rusteditorfactory.h
 
 # Qt Creator linking
 
@@ -35,7 +37,8 @@ QTC_LIB_DEPENDS += \
     # nothing here at this time
 
 QTC_PLUGIN_DEPENDS += \
-    coreplugin
+    coreplugin \
+    texteditor
 
 QTC_PLUGIN_RECOMMENDS += \
     # optional plugin dependencies. nothing here at this time
@@ -43,3 +46,6 @@ QTC_PLUGIN_RECOMMENDS += \
 ###### End _dependencies.pri contents ######
 
 include($$QTCREATOR_SOURCES/src/qtcreatorplugin.pri)
+
+RESOURCES += \
+    rusteditor.qrc

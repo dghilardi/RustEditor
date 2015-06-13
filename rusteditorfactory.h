@@ -18,18 +18,21 @@
  *  along with RustEditor.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RUSTEDITORCONSTANTS_H
-#define RUSTEDITORCONSTANTS_H
+#ifndef RUSTEDITORFACTORY_H
+#define RUSTEDITORFACTORY_H
 
-namespace RustEditor {
-namespace Constants {
+#include <texteditor/texteditor.h>
 
-const char RUSTEDITOR_ID[] = "RustEditor.RustEditor";
-const char RUSTEDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("OpenWith::Editors", "Rust Editor");
-const char RUST_SOURCE_MIMETYPE[] = "text/x-rustsrc";
+namespace RustEditor{
+namespace Internal{
 
-} // namespace RustEditor
-} // namespace Constants
+class RustEditorFactory : public TextEditor::TextEditorFactory
+{
+public:
+    RustEditorFactory();
+};
 
-#endif // RUSTEDITORCONSTANTS_H
+} //Internal
+} //RustEditor
+#endif // RUSTEDITORFACTORY_H
 
