@@ -5,14 +5,16 @@ DEFINES += RUSTEDITOR_LIBRARY
 SOURCES += rusteditorplugin.cpp \
     rusteditorfactory.cpp \
     rusteditorwidget.cpp  \
-    rustautocompleter.cpp
+    rustautocompleter.cpp \
+    rust/matchingtext.cpp
 
 HEADERS += rusteditorplugin.h \
         rusteditor_global.h \
         rusteditorconstants.h \
     rusteditorfactory.h \
     rusteditorwidget.h  \
-    rustautocompleter.h
+    rustautocompleter.h \
+    rust/matchingtext.h
 
 # Qt Creator linking
 

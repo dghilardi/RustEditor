@@ -3,6 +3,8 @@ RustEditor
 
 Attempt to create a plugin for qtcreator letting it became a rust IDE
 
+RustEditor includes code from qtcreator, read the file LICENSE-3RD-PARTY.txt to gain information about licenses.
+
 ## Develop
 
  * Download qtcreator source and compile it

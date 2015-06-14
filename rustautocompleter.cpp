@@ -19,11 +19,21 @@
 */
 
 #include "rustautocompleter.h"
+#include "rust/matchingtext.h"
 
 bool RustEditor::Internal::RustAutoCompleter::contextAllowsAutoParentheses(const QTextCursor &cursor, const QString &textToInsert) const
 {
-    Q_UNUSED(cursor)
-    Q_UNUSED(textToInsert)
+    QChar ch;
+
+    if (! textToInsert.isEmpty())
+        ch = textToInsert.at(0);
+
+    if (! (Rust::MatchingText::shouldInsertMatchingText(cursor)
+           || ch == QLatin1Char('\'')
+           || ch == QLatin1Char('"')))
+        return false;
+    else if (isInComment(cursor))
+        return false;
 
     return true;
 }
@@ -51,17 +61,10 @@ bool RustEditor::Internal::RustAutoCompleter::isInString(const QTextCursor &curs
 
 QString RustEditor::Internal::RustAutoCompleter::insertMatchingBrace(const QTextCursor &cursor, const QString &text, QChar la, int *skippedChars) const
 {
-    Q_UNUSED(cursor)
-    Q_UNUSED(text)
-    Q_UNUSED(la)
-    Q_UNUSED(skippedChars)
-
-    return QString();
+    return Rust::MatchingText::insertMatchingBrace(cursor, text, la, skippedChars);
 }
 
 QString RustEditor::Internal::RustAutoCompleter::insertParagraphSeparator(const QTextCursor &cursor) const
 {
-    Q_UNUSED(cursor)
-
-    return QString();
+    return Rust::MatchingText::insertParagraphSeparator(cursor);
 }
