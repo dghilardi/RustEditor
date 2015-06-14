@@ -4,13 +4,15 @@ DEFINES += RUSTEDITOR_LIBRARY
 
 SOURCES += rusteditorplugin.cpp \
     rusteditorfactory.cpp \
-    rusteditorwidget.cpp
+    rusteditorwidget.cpp  \
+    rustautocompleter.cpp
 
 HEADERS += rusteditorplugin.h \
         rusteditor_global.h \
         rusteditorconstants.h \
     rusteditorfactory.h \
-    rusteditorwidget.h
+    rusteditorwidget.h  \
+    rustautocompleter.h
 
 # Qt Creator linking
 

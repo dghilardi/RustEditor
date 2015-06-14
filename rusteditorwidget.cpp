@@ -20,9 +20,11 @@
 
 #include "rusteditorwidget.h"
 
+#include "rustautocompleter.h"
+
 using namespace RustEditor::Internal;
 
 RustEditorWidget::RustEditorWidget()
 {
-
+    setAutoCompleter(new RustAutoCompleter);
 }
