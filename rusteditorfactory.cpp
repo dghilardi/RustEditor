@@ -20,6 +20,7 @@
 
 #include "rusteditorfactory.h"
 #include "rusteditorwidget.h"
+#include "rustcompletionassist.h"
 
 #include <QCoreApplication>
 
@@ -48,6 +49,7 @@ RustEditorFactory::RustEditorFactory()
     setEditorWidgetCreator([]() { return new RustEditorWidget; });
     setIndenterCreator([](){return new TextEditor::NormalIndenter;});
 
+    setCompletionAssistProvider(new RustCompletionAssistProvider);
     setCommentStyle(Utils::CommentDefinition::CppStyle);
     setCodeFoldingSupported(true);
     setMarksVisible(true);

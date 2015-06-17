@@ -30,7 +30,7 @@ class RustEditorWidget : public TextEditor::TextEditorWidget
 {
 public:
     RustEditorWidget();
-
+    TextEditor::AssistInterface *createAssistInterface(TextEditor::AssistKind assistKind, TextEditor::AssistReason reason) const;
 };
 }
 }

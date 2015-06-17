@@ -19,12 +19,28 @@
 */
 
 #include "rusteditorwidget.h"
-
+#include "rustcompletionassist.h"
 #include "rustautocompleter.h"
+
+#include <texteditor/textdocument.h>
+#include <utils/fileutils.h>
 
 using namespace RustEditor::Internal;
 
 RustEditorWidget::RustEditorWidget()
 {
     setAutoCompleter(new RustAutoCompleter);
+}
+
+TextEditor::AssistInterface *RustEditorWidget::createAssistInterface(
+    TextEditor::AssistKind kind, TextEditor::AssistReason reason) const
+{
+    if (kind == TextEditor::Completion)
+        return new RustCompletionAssistInterface(document(),
+                                                 position(),
+                                                 textDocument()->filePath().toString(),
+                                                 reason,
+                                                 textDocument()->mimeType());
+
+    return TextEditorWidget::createAssistInterface(kind, reason);
 }
