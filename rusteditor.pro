@@ -7,7 +7,9 @@ SOURCES += rusteditorplugin.cpp \
     rusteditorwidget.cpp  \
     rustautocompleter.cpp \
     rust/matchingtext.cpp \
-    rustcompletionassist.cpp
+    rustcompletionassist.cpp \
+    rustsettingspage.cpp \
+    rusteditorsettingswidget.cpp
 
 HEADERS += rusteditorplugin.h \
         rusteditor_global.h \
@@ -16,7 +18,9 @@ HEADERS += rusteditorplugin.h \
     rusteditorwidget.h  \
     rustautocompleter.h \
     rust/matchingtext.h \
-    rustcompletionassist.h
+    rustcompletionassist.h \
+    rustsettingspage.h \
+    rusteditorsettingswidget.h
 
 # Qt Creator linking
 
@@ -57,3 +61,6 @@ include($$QTCREATOR_SOURCES/src/qtcreatorplugin.pri)
 
 RESOURCES += \
     rusteditor.qrc
+
+FORMS += \
+    rusteditorsettingswidget.ui

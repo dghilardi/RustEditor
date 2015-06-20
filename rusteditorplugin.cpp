@@ -21,6 +21,7 @@
 #include "rusteditorplugin.h"
 #include "rusteditorconstants.h"
 #include "rusteditorfactory.h"
+#include "rustsettingspage.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/icontext.h>
@@ -63,6 +64,8 @@ bool RustEditorPlugin::initialize(const QStringList &arguments, QString *errorSt
 
     Q_UNUSED(arguments)
     Q_UNUSED(errorString)
+
+    addAutoReleasedObject(new RustSettingsPage);
 
     Utils::MimeDatabase::addMimeTypes(QLatin1String(":/rusteditor/RustEditor.mimetypes.xml"));
     addAutoReleasedObject(new RustEditorFactory);

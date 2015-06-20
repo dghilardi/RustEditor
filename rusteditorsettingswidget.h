@@ -18,23 +18,29 @@
  *  along with RustEditor.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RUSTEDITORCONSTANTS_H
-#define RUSTEDITORCONSTANTS_H
+#ifndef RUSTEDITORSETTINGSWIDGET_H
+#define RUSTEDITORSETTINGSWIDGET_H
 
-namespace RustEditor {
-namespace Constants {
+#include <QWidget>
 
-const char RUSTEDITOR_ID[] = "RustEditor.RustEditor";
-const char RUSTEDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("OpenWith::Editors", "Rust Editor");
-const char RUST_SOURCE_MIMETYPE[] = "text/x-rustsrc";
+namespace Ui {
+class RustEditorSettingsWidget;
+}
+namespace RustEditor{
+namespace Internal{
 
-const char RUSTEDITOR_SETTINGS_ID[] = "Rust.Configurations";
-const char RUSTEDITOR_SETTINGS_CATEGORY[] = "Rust";
-const char RUSTEDITOR_SETTINGS_TR_CATEGORY[] = QT_TRANSLATE_NOOP("Rust", "Rust");
-const char RUSTEDITOR_SETTINGS_CATEGORY_ICON[] = ":/rusteditor/images/QtRust.png";
+class RustEditorSettingsWidget : public QWidget
+{
+    Q_OBJECT
 
-} // namespace RustEditor
-} // namespace Constants
+public:
+    explicit RustEditorSettingsWidget(QWidget *parent = 0);
+    ~RustEditorSettingsWidget();
 
-#endif // RUSTEDITORCONSTANTS_H
+private:
+    Ui::RustEditorSettingsWidget *ui;
+};
 
+}//Internal
+}//RustEditor
+#endif // RUSTEDITORSETTINGSWIDGET_H

@@ -18,23 +18,30 @@
  *  along with RustEditor.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RUSTEDITORCONSTANTS_H
-#define RUSTEDITORCONSTANTS_H
+#ifndef RUSTSETTINGSPAGE_H
+#define RUSTSETTINGSPAGE_H
 
-namespace RustEditor {
-namespace Constants {
+#include <coreplugin/dialogs/ioptionspage.h>
+#include <QPointer>
 
-const char RUSTEDITOR_ID[] = "RustEditor.RustEditor";
-const char RUSTEDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("OpenWith::Editors", "Rust Editor");
-const char RUST_SOURCE_MIMETYPE[] = "text/x-rustsrc";
+namespace RustEditor{
+namespace Internal{
+class RustEditorSettingsWidget;
+class RustSettingsPage : public Core::IOptionsPage
+{
+    Q_OBJECT
 
-const char RUSTEDITOR_SETTINGS_ID[] = "Rust.Configurations";
-const char RUSTEDITOR_SETTINGS_CATEGORY[] = "Rust";
-const char RUSTEDITOR_SETTINGS_TR_CATEGORY[] = QT_TRANSLATE_NOOP("Rust", "Rust");
-const char RUSTEDITOR_SETTINGS_CATEGORY_ICON[] = ":/rusteditor/images/QtRust.png";
+public:
+    explicit RustSettingsPage(QObject *parent = 0);
 
-} // namespace RustEditor
-} // namespace Constants
+    QWidget *widget();
+    void apply();
+    void finish();
 
-#endif // RUSTEDITORCONSTANTS_H
+private:
+    QPointer<RustEditorSettingsWidget> settingsWidget;
+};
 
+} //Internal
+} //RustEditor
+#endif // RUSTSETTINGSPAGE_H

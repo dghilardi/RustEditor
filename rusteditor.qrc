@@ -11,5 +11,6 @@
         <file>images/var.png</file>
         <file>images/varying.png</file>
         <file>images/qt_rs.png</file>
+        <file>images/QtRust.png</file>
     </qresource>
 </RCC>

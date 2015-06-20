@@ -18,23 +18,35 @@
  *  along with RustEditor.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RUSTEDITORCONSTANTS_H
-#define RUSTEDITORCONSTANTS_H
+#include "rustsettingspage.h"
+#include "rusteditorconstants.h"
+#include "rusteditorsettingswidget.h"
+#include <QCoreApplication>
+using namespace RustEditor::Internal;
 
-namespace RustEditor {
-namespace Constants {
+RustSettingsPage::RustSettingsPage(QObject *parent):
+    Core::IOptionsPage(parent)
+{
+    setId(Constants::RUSTEDITOR_SETTINGS_ID);
+    setDisplayName(tr("Rust Configurations"));
+    setCategory(Constants::RUSTEDITOR_SETTINGS_CATEGORY);
+    setDisplayCategory(QCoreApplication::translate("Rust",Constants::RUSTEDITOR_SETTINGS_TR_CATEGORY));
+    setCategoryIcon(QLatin1String(Constants::RUSTEDITOR_SETTINGS_CATEGORY_ICON));
+}
 
-const char RUSTEDITOR_ID[] = "RustEditor.RustEditor";
-const char RUSTEDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("OpenWith::Editors", "Rust Editor");
-const char RUST_SOURCE_MIMETYPE[] = "text/x-rustsrc";
+QWidget *RustSettingsPage::widget()
+{
+    if(!settingsWidget)
+        settingsWidget = new RustEditorSettingsWidget;
+    return settingsWidget;
+}
 
-const char RUSTEDITOR_SETTINGS_ID[] = "Rust.Configurations";
-const char RUSTEDITOR_SETTINGS_CATEGORY[] = "Rust";
-const char RUSTEDITOR_SETTINGS_TR_CATEGORY[] = QT_TRANSLATE_NOOP("Rust", "Rust");
-const char RUSTEDITOR_SETTINGS_CATEGORY_ICON[] = ":/rusteditor/images/QtRust.png";
+void RustSettingsPage::apply()
+{
 
-} // namespace RustEditor
-} // namespace Constants
+}
 
-#endif // RUSTEDITORCONSTANTS_H
-
+void RustSettingsPage::finish()
+{
+    delete settingsWidget;
+}
