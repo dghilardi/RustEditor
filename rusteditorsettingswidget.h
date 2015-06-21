@@ -21,6 +21,8 @@
 #ifndef RUSTEDITORSETTINGSWIDGET_H
 #define RUSTEDITORSETTINGSWIDGET_H
 
+#include "settings.h"
+
 #include <QWidget>
 
 namespace Ui {
@@ -37,8 +39,10 @@ public:
     explicit RustEditorSettingsWidget(QWidget *parent = 0);
     ~RustEditorSettingsWidget();
 
+    void saveSettings();
 private:
     Ui::RustEditorSettingsWidget *ui;
+    Settings settings;
 };
 
 }//Internal

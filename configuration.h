@@ -18,33 +18,36 @@
  *  along with RustEditor.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "rusteditorsettingswidget.h"
-#include "ui_rusteditorsettingswidget.h"
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
 
-#include "configuration.h"
+#include "settings.h"
 
-using namespace RustEditor::Internal;
+#include <QObject>
 
-RustEditorSettingsWidget::RustEditorSettingsWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::RustEditorSettingsWidget),
-    settings(Configuration::getSettingsPtr())
+namespace RustEditor{
+namespace Internal{
+
+class Configuration : public QObject
 {
-    ui->setupUi(this);
+    Q_OBJECT
+private:
+    static Configuration *cfg_instance;
+    Settings rusteditorSettings;
+private:
+    void load();
+    void save();
 
-    ui->pchRacer->setFileName(settings.racerPath());
-    ui->pchRustSrc->setFileName(settings.rustSrcPath());
-}
+    Utils::FileName cfgPathLookup(const Utils::FileName &cfg, const Utils::FileName &def, const QString &envKey, bool &save);
+public:
+    Configuration(QObject *parent);
 
-RustEditorSettingsWidget::~RustEditorSettingsWidget()
-{
-    delete ui;
-}
+    static Configuration *getInstancePtr();
+    static const Settings &getSettingsPtr();
+    static void setSettings(const Settings &newSettings);
+};
 
-void RustEditorSettingsWidget::saveSettings()
-{
-    settings.setRacerPath(Utils::FileName::fromUserInput(ui->pchRacer->rawPath()));
-    settings.setRustSrcPath(Utils::FileName::fromUserInput(ui->pchRustSrc->rawPath()));
+} //Internal
+} //RustEditor
 
-    Configuration::setSettings(settings);
-}
+#endif // CONFIGURATION_H

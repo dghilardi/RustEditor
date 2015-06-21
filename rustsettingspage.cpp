@@ -43,7 +43,7 @@ QWidget *RustSettingsPage::widget()
 
 void RustSettingsPage::apply()
 {
-
+    settingsWidget->saveSettings();
 }
 
 void RustSettingsPage::finish()

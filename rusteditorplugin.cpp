@@ -22,6 +22,7 @@
 #include "rusteditorconstants.h"
 #include "rusteditorfactory.h"
 #include "rustsettingspage.h"
+#include "configuration.h"
 
 #include <coreplugin/icore.h>
 #include <coreplugin/icontext.h>
@@ -64,6 +65,8 @@ bool RustEditorPlugin::initialize(const QStringList &arguments, QString *errorSt
 
     Q_UNUSED(arguments)
     Q_UNUSED(errorString)
+
+    new Configuration(this);
 
     addAutoReleasedObject(new RustSettingsPage);
 

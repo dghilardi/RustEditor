@@ -9,7 +9,9 @@ SOURCES += rusteditorplugin.cpp \
     rust/matchingtext.cpp \
     rustcompletionassist.cpp \
     rustsettingspage.cpp \
-    rusteditorsettingswidget.cpp
+    rusteditorsettingswidget.cpp \
+    configuration.cpp \
+    settings.cpp
 
 HEADERS += rusteditorplugin.h \
         rusteditor_global.h \
@@ -20,7 +22,9 @@ HEADERS += rusteditorplugin.h \
     rust/matchingtext.h \
     rustcompletionassist.h \
     rustsettingspage.h \
-    rusteditorsettingswidget.h
+    rusteditorsettingswidget.h \
+    configuration.h \
+    settings.h
 
 # Qt Creator linking
 

@@ -21,6 +21,7 @@
 #include "rustcompletionassist.h"
 #include "rusteditorconstants.h"
 #include "rusteditorplugin.h"
+#include "configuration.h"
 
 #include <coreplugin/idocument.h>
 #include <coreplugin/id.h>
@@ -212,16 +213,23 @@ IAssistProposal *RustCompletionAssistProcessor::perform(const AssistInterface *i
 
     QList<AssistProposalItem *> m_completions; // all possible completions at given point
 
+    const Settings &rustEditorSettings = Configuration::getSettingsPtr();
+
+    QString rustPath = rustEditorSettings.rustSrcPath().toString();
+    QString racerPath = rustEditorSettings.racerPath().toString();
+    if(!racerPath.isEmpty() && !racerPath.endsWith(QLatin1Char('/'))) racerPath.append(QLatin1Char('/'));
+
+
     //set environment variable pointing to where rust source is located
     QStringList env;
-    env << QLatin1String("RUST_SRC_PATH=/usr/src/rustc-nightly/src");
+    env << (QLatin1String("RUST_SRC_PATH=")+rustPath);
 
     //run 'racer complete <linenum> <charnum> <filename>' and retrieve the output
     QProcess process;
     process.setEnvironment(env);
     QStringList params;
     params << QLatin1String("complete") << QString::number(linenum) << QString::number(charnum) << tmpsrc.fileName();
-    process.start(QLatin1String("racer"), params);
+    process.start(racerPath+QLatin1String("racer"), params);
     process.waitForFinished();
     QString result = QString::fromLatin1(process.readAllStandardOutput());
 

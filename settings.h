@@ -18,33 +18,34 @@
  *  along with RustEditor.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "rusteditorsettingswidget.h"
-#include "ui_rusteditorsettingswidget.h"
+#ifndef SETTINGS_H
+#define SETTINGS_H
 
-#include "configuration.h"
+#include <utils/fileutils.h>
 
-using namespace RustEditor::Internal;
+class QSettings;
 
-RustEditorSettingsWidget::RustEditorSettingsWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::RustEditorSettingsWidget),
-    settings(Configuration::getSettingsPtr())
+namespace RustEditor{
+namespace Internal{
+
+class Settings
 {
-    ui->setupUi(this);
+private:
+    Utils::FileName racer_path;
+    Utils::FileName rust_src_path;
+public:
+    Settings();
 
-    ui->pchRacer->setFileName(settings.racerPath());
-    ui->pchRustSrc->setFileName(settings.rustSrcPath());
-}
+    void load(const QSettings &settings);
+    void save(QSettings &settings);
 
-RustEditorSettingsWidget::~RustEditorSettingsWidget()
-{
-    delete ui;
-}
+    Utils::FileName racerPath() const;
+    void setRacerPath(const Utils::FileName &newPath);
 
-void RustEditorSettingsWidget::saveSettings()
-{
-    settings.setRacerPath(Utils::FileName::fromUserInput(ui->pchRacer->rawPath()));
-    settings.setRustSrcPath(Utils::FileName::fromUserInput(ui->pchRustSrc->rawPath()));
+    Utils::FileName rustSrcPath() const;
+    void setRustSrcPath(const Utils::FileName &newPath);
+};
 
-    Configuration::setSettings(settings);
-}
+} //Internal
+} //RustEditor
+#endif // SETTINGS_H
