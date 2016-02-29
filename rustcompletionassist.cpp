@@ -211,7 +211,7 @@ IAssistProposal *RustCompletionAssistProcessor::perform(const AssistInterface *i
     int charnum, linenum;
     TextEditor::Convenience::convertPosition(doc, m_interface->position(), &linenum, &charnum);
 
-    QList<AssistProposalItem *> m_completions; // all possible completions at given point
+    QList<AssistProposalItemInterface *> m_completions; // all possible completions at given point
 
     const Settings &rustEditorSettings = Configuration::getSettingsPtr();
 
