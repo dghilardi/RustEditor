@@ -23,7 +23,7 @@ fi
 
 mkdir -p "${DOWNLOAD_DIR}" && cd "${DOWNLOAD_DIR}"
 wget "http://download.qt-project.org/official_releases/qtcreator/3.6/3.6.0/qt-creator-opensource-src-3.6.0.tar.gz"
-tar xvzf qt-creator-opensource-src-3.6.0.tar.gz
+tar xzf qt-creator-opensource-src-3.6.0.tar.gz
 wget "${QT_BIN_LINK}"
 7zr x -oqtcbuild/3.6.0/ qtcreator.7z
 

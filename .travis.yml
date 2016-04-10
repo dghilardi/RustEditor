@@ -26,8 +26,3 @@ before_script:
 script:
   - build/script.sh
   - find "$TRAVIS_BUILD_DIR/build/plugins"
-
-addons:
-  artifacts:
-    paths:
-      - ./build/plugins
