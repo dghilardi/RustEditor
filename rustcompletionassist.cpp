@@ -23,7 +23,6 @@
 #include "rusteditorplugin.h"
 #include "configuration.h"
 
-#include <app/app_version.h>
 #include <coreplugin/idocument.h>
 #include <coreplugin/id.h>
 #include <texteditor/completionsettings.h>
@@ -213,9 +212,9 @@ IAssistProposal *RustCompletionAssistProcessor::perform(const AssistInterface *i
     TextEditor::Convenience::convertPosition(doc, m_interface->position(), &linenum, &charnum);
 
     //Keep the compatibility with 3.x until 4.0 is out
-#if IDE_VERSION_RELEASE < 80
+#if (QTC_VERSION_MAJOR == 3) && (QTC_VERSION_MINOR == 6)
     QList<AssistProposalItem *> m_completions;
-#else
+#elif (QTC_VERSION_MAJOR == 4) && (QTC_VERSION_MINOR == 0)
     QList<AssistProposalItemInterface *> m_completions; // all possible completions at given point
 #endif
 

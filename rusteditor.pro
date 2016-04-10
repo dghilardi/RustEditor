@@ -28,6 +28,20 @@ HEADERS += rusteditorplugin.h \
 
 # Qt Creator linking
 
+## Set QTC Version
+QTC_MAJ = $$(QTC_MAJOR)
+QTC_MIN = $$(QTC_MINOR)
+
+isEmpty(QTC_MAJ) || isEmpty(QTC_MIN){
+    QTC_MAJ = 3
+    QTC_MIN = 6
+}
+
+DEFINES += "QTC_VERSION_MAJOR=$${QTC_MAJ}"
+DEFINES += "QTC_VERSION_MINOR=$${QTC_MIN}"
+message("Target Qt Creator version: $${QTC_MAJ}.$${QTC_MIN}")
+
+
 ## set the QTC_SOURCE environment variable to override the setting here
 QTCREATOR_SOURCES = $$(QTC_SOURCE)
 isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=/Users/example/qtcreator-src
