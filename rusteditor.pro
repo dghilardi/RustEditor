@@ -68,3 +68,10 @@ RESOURCES += \
 
 FORMS += \
     rusteditorsettingswidget.ui
+
+## define output path
+!isEmpty($$(PLUGIN_OUT_PATH)) {
+    DESTDIR = $$(PLUGIN_OUT_PATH)
+    message("You set output path to $$DESTDIR")
+}
+message("Plugin output path is $$DESTDIR")
