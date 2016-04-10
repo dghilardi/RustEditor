@@ -1,0 +1,33 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      compiler: gcc
+      env: ENV_QTC_SOURCE="$TRAVIS_BUILD_DIR/build/downloads/qt-creator-opensource-src-3.6.0" ENV_QTC_BUILD="$TRAVIS_BUILD_DIR/build/downloads/qtcbuild/3.6.0/lib/qtcreator/" ENV_QTC_VERSION="3.6.0" ENV_QTC_MV="6" ENV_QMAKE_PARAMS="-spec linux-g++"
+    - os: osx
+      compiler: clang
+      env: ENV_QTC_SOURCE="$TRAVIS_BUILD_DIR/build/downloads/qt-creator-opensource-src-3.6.0" ENV_QTC_BUILD="$TRAVIS_BUILD_DIR/build/downloads/qtcbuild/3.6.0/" ENV_QTC_VERSION="3.6.0" ENV_QTC_MV="6" ENV_QMAKE_PARAMS=""
+
+env:
+  global:
+    - VERSION=1.0
+
+before_install:
+  - build/before_install.sh
+
+install:
+  - build/install.sh
+
+before_script:
+  - git submodule update --init
+
+script:
+  - build/script.sh
+  - find "$TRAVIS_BUILD_DIR/build/plugins"
+
+addons:
+  artifacts:
+    paths:
+      - ./build/plugins
