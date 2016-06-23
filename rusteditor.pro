@@ -45,10 +45,14 @@ message("Target Qt Creator version: $${QTC_MAJ}.$${QTC_MIN}")
 ## set the QTC_SOURCE environment variable to override the setting here
 QTCREATOR_SOURCES = $$(QTC_SOURCE)
 isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=/Users/example/qtcreator-src
+!exists($$QTCREATOR_SOURCES):\
+    error("Set variable QTC_SOURCE to the QtCreator's sources path (current path is \"$$QTC_SOURCE\")")
 
 ## set the QTC_BUILD environment variable to override the setting here
 IDE_BUILD_TREE = $$(QTC_BUILD)
 isEmpty(IDE_BUILD_TREE):IDE_BUILD_TREE=/Users/example/qtcreator-build
+!exists($$IDE_BUILD_TREE): \
+    error("Set variable QTC_BUILD to the QtCreator's libraries path (current path is \"$$QTC_BUILD\")")
 
 ## uncomment to build plugin into user config directory
 ## <localappdata>/plugins/<ideversion>
@@ -63,6 +67,12 @@ isEmpty(IDE_BUILD_TREE):IDE_BUILD_TREE=/Users/example/qtcreator-build
 ###### plugin's sources.
 
 QTC_PLUGIN_NAME = RustEditor
+
+LIBS += -L$$IDE_PLUGIN_PATH/QtProject \
+        -L$$IDE_BUILD_TREE \
+        -L$$IDE_BUILD_TREE/plugins/QtProject \
+        -L$$IDE_BUILD_TREE/plugins
+
 QTC_LIB_DEPENDS += \
     # nothing here at this time
 
