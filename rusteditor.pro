@@ -31,7 +31,10 @@ HEADERS += rusteditorplugin.h \
 ## Set QTC Version
 QTC_MAJ = $$(QTC_MAJOR)
 QTC_MIN = $$(QTC_MINOR)
-
+isEmpty(QTC_MAJ) || isEmpty(QTC_MIN){
+    QTC_MAJ = $$QTC_MAJOR
+    QTC_MIN = $$QTC_MINOR
+}
 isEmpty(QTC_MAJ) || isEmpty(QTC_MIN){
     QTC_MAJ = 3
     QTC_MIN = 6
