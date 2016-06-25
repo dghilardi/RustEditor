@@ -33,7 +33,7 @@ before_build:
   - cmd: '%APPVEYOR_BUILD_FOLDER%\build\make_import_libs.bat %APPVEYOR_BUILD_FOLDER%\qt-bin\lib\qtcreator\plugins %APPVEYOR_BUILD_FOLDER%\qt-libs'
 
 build_script:
-  - cmd: qmake %APPVEYOR_BUILD_FOLDER%/rusteditor.pro -r "CONFIG+=%configuration%" "QTC_SOURCE=%APPVEYOR_BUILD_FOLDER%\qt-src\qt-creator-opensource-src-3.6.0" "QTC_BUILD=%APPVEYOR_BUILD_FOLDER%\qt-bin\bin" "LIBS+=-L%APPVEYOR_BUILD_FOLDER%\qt-libs" "OUTPUT_PATH=%APPVEYOR_BUILD_FOLDER%\artifacts\3.6.0" "QTC_MAJOR=3" "QTC_MINOR=6"
+  - cmd: qmake %APPVEYOR_BUILD_FOLDER%/rusteditor.pro -r "CONFIG+=%configuration%" "QTC_SOURCE=%APPVEYOR_BUILD_FOLDER%\qt-src\qt-creator-opensource-src-3.6.0" "QTC_BUILD=%APPVEYOR_BUILD_FOLDER%\qt-bin\bin" "LIBS+=-L%APPVEYOR_BUILD_FOLDER%\qt-libs" "PLUGIN_OUT_PATH=%APPVEYOR_BUILD_FOLDER%\artifacts\3.6.0" "QTC_MAJOR=3" "QTC_MINOR=6"
   - cmd: nmake.exe
 
 after_build:

@@ -100,4 +100,8 @@ FORMS += \
     DESTDIR = $$(PLUGIN_OUT_PATH)
     message("You set output path to $$DESTDIR")
 }
+!isEmpty(PLUGIN_OUT_PATH) {
+    DESTDIR = $$PLUGIN_OUT_PATH
+    message("You set output path to $$DESTDIR")
+}
 message("Plugin output path is $$DESTDIR")
