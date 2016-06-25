@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------------
           GNU LESSER GENERAL PUBLIC LICENSE V2.1 (LGPL)
-            applies to: 
+            applies to:
               - qtcreator, Copyright (c) 2015 The Qt Company Ltd.
               - qt, Copyright 2015 The Qt Company Ltd.
 
@@ -511,7 +511,7 @@ That's all there is to it!
 
 -----------------------------------------------------------------------------
           GNU LESSER GENERAL PUBLIC LICENSE V3 (LGPL)
-            applies to: 
+            applies to:
               - qtcreator, Copyright (c) 2015 The Qt Company Ltd.
               - qt, Copyright 2015 The Qt Company Ltd.
 
@@ -682,8 +682,9 @@ permanent authorization for you to choose that version for the Library.
 
 -----------------------------------------------------------------------------
           The MIT License (MIT)
-            applies to: 
+            applies to:
               - Travis CI configuration files
+              - Appveyor CI configuration files
 
 -----------------------------------------------------------------------------
 

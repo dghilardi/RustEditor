@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/dghilardi/RustEditor.svg?branch=master)](https://travis-ci.org/dghilardi/RustEditor)
+[![Build status](https://ci.appveyor.com/api/projects/status/92d4nk5kd8n4k0re?svg=true)](https://ci.appveyor.com/project/dghilardi/rusteditor)
 
 RustEditor
 ==========
