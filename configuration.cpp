@@ -31,7 +31,7 @@ namespace {
     const QLatin1String SETTINGS_GROUP("RustEditorConfiguration");
 
     const QLatin1String RUST_SRC_ENV("RUST_SRC_PATH");
-    const QLatin1String RUST_SRC_DEF("/usr/src/rust");
+    const QLatin1String RUST_SRC_DEF("/usr/src/rust/src");
 
     const QLatin1String RACER_PATH_DEF("/usr/bin");
 }
