@@ -23,6 +23,7 @@
 #include "rusteditorplugin.h"
 #include "configuration.h"
 
+#include <coreplugin/messagemanager.h>
 #include <coreplugin/idocument.h>
 #include <coreplugin/id.h>
 #include <texteditor/completionsettings.h>
@@ -31,6 +32,7 @@
 #include <texteditor/codeassist/genericproposalmodel.h>
 #include <texteditor/codeassist/genericproposal.h>
 #include <texteditor/codeassist/functionhintproposal.h>
+
 
 #include <utils/faketooltip.h>
 
@@ -238,12 +240,16 @@ IAssistProposal *RustCompletionAssistProcessor::perform(const AssistInterface *i
     process.waitForFinished();
     QString result = QString::fromLatin1(process.readAllStandardOutput());
 
-    QStringList lines = result.split(QLatin1String("\n"));
-    foreach (QString l, lines) {
-        if(l.left(5) == QString::fromLatin1("MATCH")){
-            QStringList fields = l.split(QLatin1String(","));
-            m_completions << createCompletionItem(fields[MATCH].mid(6),getRacerIcon(fields[TYPE]));
+    if(process.exitCode() == 0){
+        QStringList lines = result.split(QLatin1String("\n"));
+        foreach (QString l, lines) {
+            if(l.left(5) == QString::fromLatin1("MATCH")){
+                QStringList fields = l.split(QLatin1String(","));
+                m_completions << createCompletionItem(fields[MATCH].mid(6),getRacerIcon(fields[TYPE]));
+            }
         }
+    }else{
+        Core::MessageManager::write(result);
     }
 
     m_startPosition = pos + 1;
